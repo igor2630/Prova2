@@ -67,6 +67,8 @@ public class TelaEstacionamento extends JFrame {
             String modelo = campoModelo.getText().trim();
             if (placa.isEmpty() || modelo.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
+                campoPlaca.setText("");
+                campoModelo.setText("");
                 return;
             }
             try {
@@ -81,6 +83,8 @@ public class TelaEstacionamento extends JFrame {
             } catch (VagaNaoDisponivelException | IllegalArgumentException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }
+            campoPlaca.setText("");
+            campoModelo.setText("");
         });
         painel.add(new JLabel("Placa:"));
         painel.add(campoPlaca);
@@ -88,8 +92,6 @@ public class TelaEstacionamento extends JFrame {
         painel.add(campoModelo);
         painel.add(new JLabel(""));
         painel.add(botaoEntrada);
-        campoPlaca.setText("");
-        campoModelo.setText("");
         return painel;
     }
 
@@ -113,12 +115,12 @@ public class TelaEstacionamento extends JFrame {
             } catch (IllegalArgumentException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }
+            campoPlacaSaida.setText("");
         });
         painel.add(new JLabel("Placa:"));
         painel.add(campoPlacaSaida);
         painel.add(new JLabel(""));
         painel.add(botaoSaida);
-        campoPlacaSaida.setText("");
         return painel;
     }
 
@@ -201,13 +203,13 @@ public class TelaEstacionamento extends JFrame {
             } catch (IllegalArgumentException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             }
+            campoPesquisa.setText("");
         });
 
         painel.add(new JLabel("Número do ticket:"));
         painel.add(campoPesquisa);
         painel.add(new JLabel(""));
         painel.add(botaoPesquisar);
-        campoPesquisa.setText("");
         return painel;
     }
 }
